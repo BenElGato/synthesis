@@ -47,7 +47,7 @@ void printTruthTable(int **table, int variables) {
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
             if(j == variables){
-                printf("|%d ", table[i][j]);
+                printf(" %d ", table[i][j]);
             } else {
                 printf("%d ", table[i][j]);
             }
