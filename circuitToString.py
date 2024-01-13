@@ -24,3 +24,4 @@ def circuitToString(circuit):
             s = add_char_to_ith_line(s, '-', j)
             s = add_char_to_ith_line(s, '-', j)
     return s
+
