@@ -1,7 +1,7 @@
 import string
 
 
-def check_csv(filepath):
+def getTruthTable(filepath):
     with open(filepath, 'r') as file:
         truth_table = []
         lines = [line.strip() for line in file]
@@ -28,5 +28,5 @@ def check_csv(filepath):
         if len(lines) != 2**number + 1:
             raise ValueError(f"Wrong amount of lines in {filepath}!")
         return truth_table
-table = check_csv("table.txt")
+table = getTruthTable("table.txt")
 print(table)
