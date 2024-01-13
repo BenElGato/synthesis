@@ -10,18 +10,18 @@ def circuitToString(circuit):
     if not circuit or circuit == []:
         return "Empty circuit"
     variables = len(circuit[0])
-    s = '-\n' * (variables - 1) + '-'
+    s = '─\n' * (variables - 1) + '─'
     for i in range(len(circuit)):
         for j in range(len(circuit[i])):
             if circuit[i][j] == Element.ZERO_COND:
-                s = add_char_to_ith_line(s,'0', j)
+                s = add_char_to_ith_line(s,'○', j)
             elif circuit[i][j] == Element.ONE_COND:
-                s = add_char_to_ith_line(s, '1', j)
+                s = add_char_to_ith_line(s, '●', j)
             elif circuit[i][j] == Element.NULL_GATE:
-                s = add_char_to_ith_line(s, '-', j)
+                s = add_char_to_ith_line(s, '─', j)
             elif circuit[i][j] == Element.FLIP:
-                s = add_char_to_ith_line(s, 'X', j)
-            s = add_char_to_ith_line(s, '-', j)
-            s = add_char_to_ith_line(s, '-', j)
+                s = add_char_to_ith_line(s, '\u2A01', j)
+            s = add_char_to_ith_line(s, '─', j)
+            s = add_char_to_ith_line(s, '─', j)
     return s
 
