@@ -44,9 +44,9 @@ def circuitToString(circuit):
     s = remove_empty_lines(s)
     return s
 
-def table_to_string(table: list((int, int))):
+def table_to_string(table: list((int, int)), bit_count: int):
     for (inp, out) in table:
-        print(binary_representation_with_min_bits(inp, 3) +  " | " + binary_representation_with_min_bits(out, 3))
+        print(binary_representation_with_min_bits(inp, bit_count) +  " | " + binary_representation_with_min_bits(out, 3))
 
     print("------------------------------")
 

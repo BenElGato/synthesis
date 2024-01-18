@@ -17,12 +17,13 @@ def get_change_gates(truth_table: list[(int, int)], bit_count: int, reverse_gate
     existing_output = set()
     for i, (current_input, current_output) in enumerate(truth_table):
         if current_output in existing_output:
-            for new_output in range(2**bit_count):
-                if not new_output in existing_output:
-                    truth_table[i] = (current_input, new_output)
-                    existing_output.add(new_output)
-                    gates.extend(create_change_gates(current_input, current_output, new_output, bit_count, reverse_gates))
-                    break
+            new_output = find_closest_number(current_output, existing_output, bit_count)
+            #for new_output in range(2**bit_count):
+            #    if not new_output in existing_output:
+            truth_table[i] = (current_input, new_output)
+            existing_output.add(new_output)
+            gates.extend(create_change_gates(current_input, current_output, new_output, bit_count, reverse_gates))
+            #        break
         else:
             existing_output.add(current_output)
 
@@ -66,7 +67,7 @@ def get_transformation_gates(truth_table: list[(int, int)], bit_count: int) -> l
             if c == "1":
                 gates.append(build_gate(bit_count, [], len(bin_of_output)-(i+1)))
                 update_truth_table(len(bin_of_output)-(i+1), [], truth_table)
-                table_to_string(truth_table)
+                table_to_string(truth_table, bit_count)
 
     for i in range(len(truth_table)):
         input = truth_table[i][0]
@@ -76,7 +77,7 @@ def get_transformation_gates(truth_table: list[(int, int)], bit_count: int) -> l
         else:
             add_bitstr, remove_bitstr = find_all_incorrect_bits(input, output, bit_count)
             gates.extend(create_transf_gates_and_update(add_bitstr, remove_bitstr, truth_table, bit_count, i))
-            table_to_string(truth_table)
+            table_to_string(truth_table, bit_count)
 
     gates.reverse()
     return gates
@@ -146,3 +147,18 @@ def find_set_bits_indices(number):
     binary_representation = bin(number)[2:] 
     set_bits_indices = [i for i, bit in enumerate(reversed(binary_representation)) if bit == '1']
     return set_bits_indices 
+
+def hamming_distance(num1, num2):
+    bin_str1 = bin(num1)[2:]
+    bin_str2 = bin(num2)[2:]
+    max_len = max(len(bin_str1), len(bin_str2))
+    bin_str1 = bin_str1.zfill(max_len)
+    bin_str2 = bin_str2.zfill(max_len)
+    distance = sum(b1 != b2 for b1, b2 in zip(bin_str1, bin_str2))
+    return distance
+
+def find_closest_number(x, y, bit_count):
+    print([num for num in range(2 ** bit_count) if num not in y])
+    closest_number = min((num for num in range(2 ** bit_count) if num not in y),
+                         key=lambda num: hamming_distance(x, num))
+    return closest_number
