@@ -1,6 +1,6 @@
-from parser1 import getTruthTable
+from parser import getTruthTable
 from one_pass_synthesis import *
 
-tt = getTruthTable("/home/peyman/uni/emergingtech/synthesis/table2.txt")
+tt = getTruthTable("bidirectional_example.txt")
 
 one_pass_synthesis(tt)
