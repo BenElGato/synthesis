@@ -46,7 +46,7 @@ def circuitToString(circuit):
 
 def table_to_string(table: list((int, int)), bit_count: int):
     for (inp, out) in table:
-        print(binary_representation_with_min_bits(inp, bit_count) +  " | " + binary_representation_with_min_bits(out, 3))
+        print(binary_representation_with_min_bits(inp, bit_count) +  " | " + binary_representation_with_min_bits(out, bit_count))
 
     print("------------------------------")
 

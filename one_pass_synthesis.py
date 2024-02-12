@@ -78,6 +78,7 @@ def get_transformation_gates(truth_table: list[(int, int)], bit_count: int) -> l
             add_bitstr, remove_bitstr = find_all_incorrect_bits(input, output, bit_count)
             gates.extend(create_transf_gates_and_update(add_bitstr, remove_bitstr, truth_table, bit_count, i))
             table_to_string(truth_table, bit_count)
+            #print(circuitToString(gates))
 
     gates.reverse()
     return gates
