@@ -13,13 +13,13 @@ if __name__ == '__main__':
     elif method == "uni_opt":
         one_pass_synthesis(tt)
     elif method == "uni_temp":
-        reduce(bi_one_pass_synthesis(tt))
+        tt_circuit_To_String(reduce(bi_one_pass_synthesis(tt)))
     elif method == "bi":
         bi_one_pass_synthesis(tt)
     elif method == "bi_temp":
-        reduce(bi_one_pass_synthesis(tt))
+        tt_circuit_To_String(reduce(bi_one_pass_synthesis(tt)))
     elif method == "bdd":
-        bdd_based_synthesis(tt)
+        bdd_circuit_to_string(bdd_based_synthesis(tt))
     else:
         print("method does not exist")
         exit(1)
