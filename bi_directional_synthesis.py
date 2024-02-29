@@ -2,14 +2,14 @@ from math import log2
 from circuitToString import *
 from one_pass_synthesis import get_change_gates,hamming_distance, find_all_incorrect_bits,create_transf_gates_and_update as onepass_create_transf_gates_and_update, find_set_bits_indices, build_gate,flip_bit,get_bit
 
-def one_pass_synthesis(truth_table: list[(int, int)]) -> list[list[Element]]:
+def bi_one_pass_synthesis(truth_table: list[(int, int)]) -> list[list[Element]]:
     bit_count = int(log2(len(truth_table)))
     result_gates = []
     reverse_gates = []#get_reverse_change_gates(bit_count)
     change_gates = get_change_gates(truth_table, bit_count, reverse_gates)
     transformation_gates = get_transformation_gates(truth_table, bit_count)
     result_gates = change_gates + transformation_gates + reverse_gates
-    print(circuitToString(result_gates))
+    print(tt_circuit_To_String(result_gates))
     return result_gates
 
 

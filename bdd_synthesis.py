@@ -1,3 +1,5 @@
+from math import log2
+
 from TruthTable_To_BDD import build_bdd
 from Gate_Elements import *
 def add_gates_rec(node, num_inputs):
@@ -414,10 +416,11 @@ def get_bdds(tt):
         copied_list = [(x, extract_bit((y,), i)[0]) for x, y in tt]
         bdds.append(build_bdd(copied_list))
     return bdds
-def bdd_based_synthesis(tt, num_inputs):
+def bdd_based_synthesis(tt):
     """
     - Takes a reverseible truth table and returns the resulting circuit, as well as the line indices of the output variables
     """
+    num_inputs = int(log2(len(tt)))
     bdds = get_bdds(tt)
     circuits = []
     for bdd in bdds:
