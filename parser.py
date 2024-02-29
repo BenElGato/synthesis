@@ -28,5 +28,3 @@ def getTruthTable(filepath):
         if len(lines) != 2**number + 1:
             raise ValueError(f"Wrong amount of lines in {filepath}!")
         return truth_table
-table = getTruthTable("table.txt")
-print(table)
