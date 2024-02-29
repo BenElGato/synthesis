@@ -1,5 +1,5 @@
 from circuitToString import *
-from parser import getTruthTable
+from tt_parser import getTruthTable
 from bi_directional_synthesis import one_pass_synthesis as one_pass_bi
 from one_pass_synthesis import one_pass_synthesis as one_pass_uni
 from Gate_Elements import *
