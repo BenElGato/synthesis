@@ -13,11 +13,11 @@ if __name__ == '__main__':
     elif method == "uni_opt":
         one_pass_synthesis(tt)
     elif method == "uni_temp":
-        tt_circuit_To_String(reduce(one_pass_synthesis(tt)))
+        print(tt_circuit_To_String(reduce(one_pass_synthesis(tt))))
     elif method == "bi":
         bi_one_pass_synthesis(tt)
     elif method == "bi_temp":
-        tt_circuit_To_String(reduce(bi_one_pass_synthesis(tt)))
+        print(tt_circuit_To_String(reduce(bi_one_pass_synthesis(tt))))
     elif method == "bdd":
         (circuit, pointers) = bdd_based_synthesis(tt)
         print(bdd_circuit_to_string(circuit, pointers))
