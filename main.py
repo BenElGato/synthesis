@@ -19,7 +19,8 @@ if __name__ == '__main__':
     elif method == "bi_temp":
         tt_circuit_To_String(reduce(bi_one_pass_synthesis(tt)))
     elif method == "bdd":
-        bdd_circuit_to_string(bdd_based_synthesis(tt))
+        (circuit, pointers) = bdd_based_synthesis(tt)
+        print(bdd_circuit_to_string(circuit, pointers))
     else:
         print("method does not exist")
         exit(1)
