@@ -24,6 +24,7 @@ def get_change_gates(truth_table: list[(int, int)], bit_count: int, reverse_gate
                 for temp in range(2 ** bit_count):
                     if not temp in existing_output:
                         new_output = temp
+                        break
             truth_table[i] = (current_input, new_output)
             existing_output.add(new_output)
             gates.extend(create_change_gates(current_input, current_output, new_output, bit_count, reverse_gates))
