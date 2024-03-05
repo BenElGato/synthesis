@@ -363,32 +363,15 @@ def add_input_cond(var_lines, num_variables, node_val):
 def isOneLeaf(node):
     """
     Check if the given node is a one leaf (terminal node with output value 1).
-
-    Parameters:
-    - node: The node to check.
-
-    Returns:
-    - True if the node is a one leaf, False otherwise.
     """
     return node.low is None and node.high is None and node.value == 1
 def isZeroLeaf(node):
     """
     Check if the given node is a zero leaf (terminal node with output value 0).
-
-    Parameters:
-    - node: The node to check.
-
-    Returns:
-    - True if the node is a zero leaf, False otherwise.
     """
     return node.low is None and node.high is None and node.value == 0
 def count_terminal_nodes(node):
     """
-    Count the number of terminal nodes with output value 1 and 0 in a binary decision diagram (BDD).
-
-    Parameters:
-    - node: The root node of the BDD.
-
     Returns:
     - A tuple containing the counts of terminal nodes with output value 1 and 0.
     """
